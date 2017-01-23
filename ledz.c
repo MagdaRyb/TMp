@@ -37,10 +37,10 @@ void greenled (bool state)	{
 	switch(state)
 	{
 		case 0:
-			PTD->PCOR = led_mask[ledGreen];
+			PTD->PSOR = led_mask[ledGreen];
 			break;
 		case 1:
-			PTD->PSOR = led_mask[ledGreen];
+			PTD->PCOR = led_mask[ledGreen];
 			break;
 	}
 }
@@ -49,10 +49,10 @@ void redled(bool state) {
 		switch(state)
 	{
 		case 0:
-			PTE->PCOR = led_mask[ledRed];
+			PTE->PSOR = led_mask[ledRed];
 			break;
 		case 1:
-			PTE->PSOR = led_mask[ledRed];
+			PTE->PCOR = led_mask[ledRed];
 			break;
 	}
 }
