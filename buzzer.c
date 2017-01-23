@@ -8,29 +8,29 @@ void buzzerInitalize(void) {
 	PTC->PDDR |= buzzerHigh;  /* enable PTD5 as Output */
 	PTC->PDDR |= buzzerLow;  /* enable PTE29 as Output */
 	
-	PTC->PCOR = buzzerHigh;  /* switch off */
-	PTC->PCOR = buzzerLow;  /* switch off */
+	PTC->PSOR = buzzerHigh;  /* switch off */
+	PTC->PSOR = buzzerLow;  /* switch off */
 
 }
 
 void buzzersOff(void) {
-		PTC->PCOR = buzzerHigh;  /* switch off */
-		PTC->PCOR = buzzerLow;  /* switch off */
+		PTC->PSOR = buzzerHigh;  /* switch off */
+		PTC->PSOR = buzzerLow;  /* switch off */
 }
 
 void buzzersOn(void) {
-		PTC->PSOR = buzzerHigh;  /* switch on */
-		PTC->PSOR = buzzerLow;  /* switch on */
+		PTC->PCOR = buzzerHigh;  /* switch on */
+		PTC->PCOR = buzzerLow;  /* switch on */
 }
 
 void buzzerhigh(bool state)	{
 	switch(state)
 	{
 		case 0:
-			PTC->PCOR = buzzerHigh;
+			PTC->PSOR = buzzerHigh;
 			break;
 		case 1:
-			PTC->PSOR = buzzerHigh;
+			PTC->PCOR = buzzerHigh;
 			break;
 	}
 }
@@ -39,10 +39,10 @@ void buzzerlow (bool state) {
 		switch(state)
 	{
 		case 0:
-			PTC->PCOR = buzzerLow;
+			PTC->PSOR = buzzerLow;
 			break;
 		case 1:
-			PTC->PSOR = buzzerLow;
+			PTC->PCOR = buzzerLow;
 			break;
 	}
 }
