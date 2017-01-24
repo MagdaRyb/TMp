@@ -1,20 +1,23 @@
 #ifndef irq_h
 #define irq_h
 
+#include "stdbool.h"
 #include "buttons.h"
 #include "pit.h"
-#include "stdbool.h"
+
 
 
 volatile int BPM;
-volatile int METRUM [2];
+volatile int METRUM;
 int minbpm;
 int maxbpm;
-bool COUNTER_STATE;
+int maxmetrum;
+int state;
 
 void PORTC_PORTD_IRQHandler(void);	//Button IRQ Handler
 void PIT_IRQHandler(void);					//Periodic Interrupt Timer IRQ Handler
-void update(void);									//Function that recalculates LDVAL setting based on BPM and Metrum
-void counterstst(void);							//Function alternating between start and stop of counting
+
+void update(void);					//Function that recalculates LDVAL setting based on BPM and Metrum
+void metrumchg(void);				//Function that handles change of metrum up to maxmetrum!				
 
 #endif

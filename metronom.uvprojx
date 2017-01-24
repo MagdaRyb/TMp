@@ -10,6 +10,7 @@
       <TargetName>Source</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>MKL46Z256xxx4</Device>
@@ -382,6 +383,36 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>buttons.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\buttons.c</FilePath>
+            </File>
+            <File>
+              <FileName>buzzer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\buzzer.c</FilePath>
+            </File>
+            <File>
+              <FileName>irq.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\irq.c</FilePath>
+            </File>
+            <File>
+              <FileName>ledz.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ledz.c</FilePath>
+            </File>
+            <File>
+              <FileName>pit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\pit.c</FilePath>
+            </File>
+            <File>
+              <FileName>slcd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\slcd.c</FilePath>
             </File>
           </Files>
         </Group>

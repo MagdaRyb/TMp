@@ -1,9 +1,6 @@
 #include "MKL46Z4.h"
-#include "buttons.h"
-#include "buzzer.h"
 #include "irq.h"
-#include "pit.h"
-#include "ledz.h"
+/*Rewrite v include to IRQ*/
 #include "slcd.h"		//Temporary include -> try not to laugh, let's make it on sLCD first, then if tutor says so, we'll introduce LED 7-segment done on interrupts
 
 void setup(void);	//not finished
@@ -13,10 +10,6 @@ int main (void) {
 
 	setup();		// All the setup should be confined within this function to make the code clear!
 
-	
-	
-	
-	
 	
 	
 	
@@ -32,12 +25,10 @@ void setup(void){
 	
 	BPM = 60;				//Initial BPM
 	global_LDVAL = 24000000;	//Initial counter setting -> corresponds to BPM of 60BPM and metrum 1/X
-	METRUM[0] = 1;	//First part of metrum
-	METRUM[1] = 1;	//Second part of metrun
+	METRUM = 4;	//First part of metrum
 	
 	minbpm = 1;			//Minimum BPM to run on code -> please do not change it lower than 1, otherwise program will stall
 	maxbpm = 280;		//Maximum BPM rating -> doesn't really have upper limit, yet if U use for e.g. 1000, you'll hear square wave, not rithmical beats 
-	
-
+	maxmetrum = 6;
 	
 }

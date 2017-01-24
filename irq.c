@@ -16,14 +16,11 @@ void PORTC_PORTD_IRQHandler(void){
 
   }
   else if(PORTC->PCR[Button_1] & PORT_PCR_ISF_MASK) {//change metre
-		
-		
-		
-		
-		/*--------------------------------------------------------------------------------------------EMPTY HERE!!! -------------------------------------------------------------------------*/
+		metrumchg();	
   }
+	
   else if(PORTC->PCR[Button_2] & PORT_PCR_ISF_MASK) {//strat/stop metre
-		counterstst();
+		counterstst();		//Toggle Start / Stop of PIT Counter 0
   }
 	
  
@@ -54,23 +51,20 @@ void update(void){
 	global_LDVAL = i/BPM;
 }
 
-void counterstst(void){
-	if(COUNTER_STATE == 0){
-		COUNTER_STATE = 1;
+void metrumchg(void){
+	if(METRUM<maxmetrum){
+		METRUM++;
 	}
-	else if(COUNTER_STATE == 1){
-		COUNTER_STATE = 0;	
+	else{
+		METRUM=0;
 	}
-	
-	freezetimer0(COUNTER_STATE);
 }
 
 
 
 
-
 /*
-	switch(METRUM[0]){
+	switch(METRUM){
 		case 0:
 			
 			break;
