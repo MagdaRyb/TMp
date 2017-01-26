@@ -3,7 +3,7 @@
 
 #include "MKL46Z4.h"
 
-// Touch Sensor function prototypes
+
 void Touch_Init(void);
 int Touch_Scan_LH(void);
 int Touch_Scan_HL(void);

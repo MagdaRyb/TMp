@@ -17,28 +17,13 @@ void Touch_Init()
 								TSI_GENCS_PS(0u) | // 0-7 for electrode prescaler
 								TSI_GENCS_NSCN(31) | // 0-31 + 1 for number of scans per electrode
 								TSI_GENCS_TSIEN_MASK | // TSI enable bit
-							//	TSI_GENCS_TSIIEN_MASK | //TSI interrupt is disabled
 								TSI_GENCS_STPE_MASK | // Enables TSI in low power mode
-								//TSI_GENCS_STM_MASK | // 0 for software trigger, 1 for hardware trigger
-								//TSI_GENCS_SCNIP_MASK | // scan in progress flag
 								TSI_GENCS_EOSF_MASK ; // End of scan flag, set to 1 to clear
-								//TSI_GENCS_CURSW_MASK; // Do not swap current sources
-//								NVIC_ClearPendingIRQ(TSI0_IRQn); 
-//								NVIC_EnableIRQ(TSI0_IRQn);
-//								NVIC_SetPriority(TSI0_IRQn, 2); 
 			
-	// The TSI threshold isn't used is in this application
+// The TSI threshold isn't used is in this application
 //	TSI0->TSHD = 	TSI_TSHD_THRESH(0x00) |
 //								TSI_TSHD_THRESL(0x00);
-
-								
 }
-//void TSI0_IRQHandler (void) {
-//	uint16_t value;
-//	value = Touch_Scan_LH();
-//	slcdDisplay(value,10);
-//	
-//}
 
 // Function to read touch sensor from low to high capacitance for left to right
 int Touch_Scan_LH(void)
@@ -64,13 +49,3 @@ int Touch_Scan_HL(void)
 	return scan - SCAN_OFFSET;
 }
 
-
-/*void TSI0_IRQHandler(void){
-		int scan;
-	TSI0->DATA = 	TSI_DATA_TSICH(10u); // Using channel 10 of The TSI
-	TSI0->DATA |= TSI_DATA_SWTS_MASK; // Software trigger for scan
-	scan = SCAN_DATA;
-	TSI0->GENCS |= TSI_GENCS_EOSF_MASK ; // Reset end of scan flag
-	
-	slcdDisplay(scan - SCAN_OFFSET, 10);
-}*/

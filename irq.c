@@ -16,26 +16,22 @@ void PORTC_PORTD_IRQHandler(void){
 			update();
 		}
   }
+	
   else if(PORTC->PCR[SW3_PIN] & PORT_PCR_ISF_MASK) {// interrupt on SW3 //subtract bpm
 		if(BPM>minbpm){
 			BPM--;
 			update();
 		}
-
-  }
-  else if(PORTC->PCR[Button_1] & PORT_PCR_ISF_MASK) {//change metre
-		metrumchg();	
   }
 	
-  else if(PORTC->PCR[Button_2] & PORT_PCR_ISF_MASK) {//strat/stop metre
+   else if(PORTC->PCR[Button_1] & PORT_PCR_ISF_MASK) {//strat/stop metre
 		counterstst();		//Toggle Start / Stop of PIT Counter 0
   }
 	
  
 	PORTC->PCR[SW1_PIN] |= PORT_PCR_ISF_MASK; 		/* Clear interrupt service flag in port control register otherwise int. remains active - Done!*/
   PORTC->PCR[SW3_PIN] |= PORT_PCR_ISF_MASK;     /* Clear the Interrupt Flag for SW3 */	
-  PORTC->PCR[Button_1] |= PORT_PCR_ISF_MASK; 
-  PORTC->PCR[Button_2] |= PORT_PCR_ISF_MASK; 
+  PORTC->PCR[Button_1] |= PORT_PCR_ISF_MASK; 		/* Clear interrupt flag in PCR on Button_1*/
 }
 
 
@@ -45,8 +41,13 @@ void  PIT_IRQHandler(void) {
 		
 		
 	}
+	else if(PIT->CHANNEL[1].TFLG & PIT_TFLG_TIF_MASK){
+		
+		
+	}
 	
 	PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
+	PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK;
 }
 
 
@@ -56,7 +57,8 @@ void  PIT_IRQHandler(void) {
 void update(void){
 	int i;
 	i = 60*24000000;
-	global_LDVAL = i/BPM;
+	global_LDVAL = i/BPM;	//Load new value to cound for PIT[0]
+	slcdDisplay(BPM, 10);	//Show updated value of BPM on sLCD 
 }
 
 void metrumchg(void){

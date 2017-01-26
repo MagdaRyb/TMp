@@ -8,6 +8,8 @@
 #include "slcd.h"
 #include "buttons.h"
 #include "buzzer.h"
+#include "TSI.h"
+#include "delay.h"
 
 
 extern int global_LDVAL;
