@@ -1,8 +1,8 @@
 #include "MKL46Z4.h"
 #include "irq.h"
 
-extern int global_LDVAL;
-extern bool COUNTER_STATE;
+extern volatile int global_LDVAL;
+extern volatile bool COUNTER_STATE;
 extern volatile int BPM;
 extern volatile int METRUM;
 extern int minbpm;
@@ -29,7 +29,7 @@ return 0;	//Ideally program shouldn't reach here
 void setup(void){
 	/*Put all the setup here!*/
 	COUNTER_STATE = 0;	//STOP COUNTING at first!
-	
+		
 	BPM = 60;				//Initial BPM
 	global_LDVAL = 24000000;	//Initial counter setting -> corresponds to BPM of 60BPM and metrum 1/X
 	METRUM = 4;	//First part of metrum

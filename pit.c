@@ -1,7 +1,7 @@
 #include "pit.h"
 
-int global_LDVAL;
-bool COUNTER_STATE;
+volatile int global_LDVAL;
+volatile bool COUNTER_STATE;
 
 
 void pitInitialize(void) {
@@ -24,6 +24,8 @@ void pitInitialize(void) {
 	PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TEN_MASK; 
 	
 	PIT->MCR = 0x00; 
+	
+	freezetimer0(COUNTER_STATE);
 
 }
 

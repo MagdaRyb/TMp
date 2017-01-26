@@ -1,0 +1,17 @@
+.\objects\main.o: main.c
+.\objects\main.o: C:\Keil_v5\ARM\PACK\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\MKL46Z4.h
+.\objects\main.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\core_cm0plus.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_compiler.h
+.\objects\main.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include\cmsis_armcc.h
+.\objects\main.o: C:\Keil_v5\ARM\PACK\Keil\Kinetis_KLxx_DFP\1.12.0\Device\Include\system_MKL46Z4.h
+.\objects\main.o: irq.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: buttons.h
+.\objects\main.o: pit.h
+.\objects\main.o: ledz.h
+.\objects\main.o: slcd.h
+.\objects\main.o: buzzer.h
+.\objects\main.o: TSI.h
+.\objects\main.o: delay.h
+.\objects\main.o: tpm.h
