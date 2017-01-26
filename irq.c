@@ -1,5 +1,13 @@
 #include "irq.h"
 
+volatile int BPM;
+volatile int METRUM;
+int minbpm;
+int maxbpm;
+int maxmetrum;
+int state;
+
+
 void PORTC_PORTD_IRQHandler(void){		
 	
 	if(PORTC->PCR[SW1_PIN] & PORT_PCR_ISF_MASK) {// interrupt on SW1 //add bpm
@@ -59,6 +67,7 @@ void metrumchg(void){
 		METRUM=0;
 	}
 }
+
 
 
 

@@ -1,23 +1,29 @@
 #include "MKL46Z4.h"
 #include "irq.h"
-/*Rewrite v include to IRQ*/
-#include "slcd.h"		//Temporary include -> try not to laugh, let's make it on sLCD first, then if tutor says so, we'll introduce LED 7-segment done on interrupts
 
-void setup(void);	//not finished
+extern int global_LDVAL;
+extern bool COUNTER_STATE;
+extern volatile int BPM;
+extern volatile int METRUM;
+extern int minbpm;
+extern int maxbpm;
+extern int maxmetrum;
 
+void setup(void);	
 
 int main (void) {
 
 	setup();		// All the setup should be confined within this function to make the code clear!
 
 	
-	
-	
+
 	while(1){};	//Empty loop, gets our processor to be stuck here and wait for the interrupts to be handled
 		/* Note for future: try introducing here some kind of low power mode / sleep mode instead of empty whil(1) loop */
+	
 		
 return 0;	//Ideally program shouldn't reach here
 }
+
 
 void setup(void){
 	/*Put all the setup here!*/
@@ -31,4 +37,10 @@ void setup(void){
 	maxbpm = 280;		//Maximum BPM rating -> doesn't really have upper limit, yet if U use for e.g. 1000, you'll hear square wave, not rithmical beats 
 	maxmetrum = 6;
 	
+	slcdInitialize();			//Function that initializes sLCD
+	pitInitialize();				//Function initializing Periodic Interrupt Timer
+	ledsInit();						//Function initializing built-in LEDs
+	buzzerInitalize();		//Function initializing external buzzers
+	buttonsInitialize();	//Function initializing in-built and external buttons to be held by interrupts
+		
 }
