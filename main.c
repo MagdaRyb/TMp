@@ -8,6 +8,7 @@ extern volatile int METRUM;
 extern int minbpm;
 extern int maxbpm;
 extern int maxmetrum;
+extern int delayms;
 
 void setup(void);	
 
@@ -36,6 +37,7 @@ void setup(void){
 	minbpm = 1;			//Minimum BPM to run on code -> please do not change it lower than 1, otherwise program will stall
 	maxbpm = 280;		//Maximum BPM rating -> doesn't really have upper limit, yet if U use for e.g. 1000, you'll hear square wave, not rithmical beats 
 	maxmetrum = 6;
+	delayms = 15;
 	
 	slcdInitialize();			//Function that initializes sLCD
 	pitInitialize();			//Function initializing Periodic Interrupt Timer
