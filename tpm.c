@@ -14,6 +14,7 @@ void tpmInitialize(void) {
 	TPM0->SC |= TPM_SC_PS(4); // Prescale Factor Selection, Divide by 16
 
 	TPM0->CNT = 0; //Clear counter
+
 	TPM0->MOD = 7000; //Modulo value
 	TPM0->CONTROLS[0].CnSC |= (TPM_CnSC_MSA_MASK ); //Software compare mode
 	TPM0->CONTROLS[0].CnSC &= ~(TPM_CnSC_MSB_MASK);
@@ -24,6 +25,7 @@ void tpmInitialize(void) {
 	TPM0->SC |= TPM_SC_TOIE_MASK; //Timer Overflow Interrupt Enable
 	NVIC_ClearPendingIRQ(TPM_IRQn);  
 	NVIC_EnableIRQ(TPM_IRQn);
+  
 	NVIC_SetPriority(TPM_IRQn, 2); 
 	TPM0->SC |= TPM_SC_CMOD(1); //Clock Mode Selection, TPM counter increments on every TPM counter clock
 }
