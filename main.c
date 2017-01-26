@@ -38,9 +38,10 @@ void setup(void){
 	maxmetrum = 6;
 	
 	slcdInitialize();			//Function that initializes sLCD
-	pitInitialize();				//Function initializing Periodic Interrupt Timer
+	pitInitialize();			//Function initializing Periodic Interrupt Timer
 	ledsInit();						//Function initializing built-in LEDs
 	buzzerInitalize();		//Function initializing external buzzers
 	buttonsInitialize();	//Function initializing in-built and external buttons to be held by interrupts
+	Touch_Init();					//Function initializing Touch Slider peripherial
 		
 }

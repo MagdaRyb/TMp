@@ -414,6 +414,21 @@
               <FileType>1</FileType>
               <FilePath>.\slcd.c</FilePath>
             </File>
+            <File>
+              <FileName>TSI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\TSI.c</FilePath>
+            </File>
+            <File>
+              <FileName>dealy.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\dealy.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\delay.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
