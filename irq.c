@@ -50,6 +50,16 @@ void  PIT_IRQHandler(void) {
 	PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK;
 }
 
+void  TPM0_IRQHandler(void) {
+	
+	if (TPM0->STATUS & TPM_STATUS_CH0F_MASK) {
+		
+		slcdDisplay(BPM, 10);
+		
+		TPM0->STATUS |= TPM_STATUS_CH0F_MASK;
+	}
+}
+
 
 
 /*---------------------------------------------------------------------FUNCTIONS NEEDED FOR IRQ HANDLING:----------------------------------------------------------------------------------*/
