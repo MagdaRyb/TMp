@@ -7,7 +7,7 @@ void del(int ms){
 	int y;
 	
 	for(i=0; i<ms; i++){
-		for(y=0; y<24000000; y++){
+		for(y=0; y<48000; y++){
 			__NOP;
 		}
 	}
