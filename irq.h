@@ -11,7 +11,6 @@
 #include "TSI.h"
 #include "delay.h"
 
-
 extern int global_LDVAL;
 extern bool COUNTER_STATE;
 
@@ -20,6 +19,7 @@ void PIT_IRQHandler(void);					//Periodic Interrupt Timer IRQ Handler
 
 void update(void);					//Function that recalculates LDVAL setting based on BPM and Metrum
 void metrumchg(void);				//Function that handles change of metrum up to maxmetrum!
+void sequence(bool);
 
 
 #endif

@@ -3,9 +3,12 @@
 
 void del(int ms){
 	/*Simple delay, counting up to specified *1ms (around)*/
+	int i;
+	int y;
 	
-	for(int i=0; i<ms; i++){
-		for(int y=0; i<24000000; i++){
+	for(i=0; i<ms; i++){
+		for(y=0; y<24000000; y++){
+			__NOP;
 		}
 	}
 	

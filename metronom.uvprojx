@@ -424,11 +424,6 @@
               <FileType>1</FileType>
               <FilePath>.\dealy.c</FilePath>
             </File>
-            <File>
-              <FileName>delay.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\delay.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

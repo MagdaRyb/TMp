@@ -6,6 +6,7 @@ int minbpm;
 int maxbpm;
 int maxmetrum;
 int state;
+int delayms;
 
 
 void PORTC_PORTD_IRQHandler(void){		
@@ -38,6 +39,105 @@ void PORTC_PORTD_IRQHandler(void){
 void  PIT_IRQHandler(void) {	
 	if(PIT->CHANNEL[0].TFLG & PIT_TFLG_TIF_MASK){ 
 		
+	switch(state){
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+		case 0:
+			if(METRUM == 0){
+				sequence(false);
+			}
+			else{
+				sequence(false);
+				state++;
+			}				
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+
+		case 1:
+			if(METRUM == 1){
+				sequence(true);
+			}
+			else{
+				sequence(true);
+				state++;
+			}
+			break;
+			/*-------------------------------------------------CASE----------------------------------------------------------*/
+		
+		case 2:
+			if(METRUM == 2){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+			
+		case 3:
+			if(METRUM == 3){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+
+		case 4:
+			if(METRUM == 4){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+
+		case 5:
+			if(METRUM == 5){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+
+		case 6:
+			if(METRUM == 6){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+
+		case 7:
+			if(METRUM == 7){
+				sequence(false);
+				state = 1;
+			}
+			else{
+				sequence(false);
+				state++;
+			}
+			break;
+		/*-------------------------------------------------CASE----------------------------------------------------------*/
+		default:
+			state = 1;
+			break;
+	}
 		
 		
 	}
@@ -70,35 +170,27 @@ void metrumchg(void){
 	}
 }
 
+void sequence(bool i){
+	if(i == 1){
+		redled(true);
+		buzzerhigh(true);
+		del(delayms);
+		redled(false);
+		buzzerhigh(false);
+	}
+	else{
+		greenled(true);
+		buzzerlow(true);
+		del(delayms);
+		greenled(false);
+		buzzerlow(false);
+	}
+}
 
 
 
 
-/*
-	switch(METRUM){
-		case 0:
-			
-			break;
-		case 1:
-			
-			break;
-		case 2:
-			
-			break;
-		case 3:
-			
-			break;
-		case 4:
-			
-			break;
-		case 5:
-			
-			break;
-		case 6:
-			
-			break;
-			
-*/
+
 
 
 
