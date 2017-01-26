@@ -1,5 +1,9 @@
 #include "pit.h"
 
+int global_LDVAL;
+bool COUNTER_STATE;
+
+
 void pitInitialize(void) {
 	SIM->SCGC6 |= SIM_SCGC6_PIT_MASK; 	
 	PIT->MCR &= ~PIT_MCR_MDIS_MASK;
