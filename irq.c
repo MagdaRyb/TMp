@@ -7,6 +7,9 @@ int maxbpm;
 int maxmetrum;
 int state;
 int delayms;
+int meter;
+int lastmeter;
+int difference;
 
 
 void PORTC_PORTD_IRQHandler(void){		
@@ -42,96 +45,88 @@ void  PIT_IRQHandler(void) {
 	switch(state){
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 		case 0:
+			sequence(false);
 			if(METRUM == 0){
-				sequence(false);
+				state = 0;
 			}
 			else{
-				sequence(false);
 				state++;
 			}				
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 
 		case 1:
-			if(METRUM == 1){
-				sequence(true);
+			sequence(true);
+			if(METRUM <= 1){
+				state = 1;
 			}
 			else{
-				sequence(true);
 				state++;
 			}
 			break;
 			/*-------------------------------------------------CASE----------------------------------------------------------*/
 		
 		case 2:
-			if(METRUM == 2){
-				sequence(false);
+			sequence(false);
+			if(METRUM <= 2){
 				state = 1;
 			}
 			else{
-				sequence(false);
 				state++;
 			}
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 			
 		case 3:
-			if(METRUM == 3){
-				sequence(false);
+			sequence(false);
+			if(METRUM <= 3){
 				state = 1;
 			}
 			else{
-				sequence(false);
 				state++;
 			}
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 
 		case 4:
-			if(METRUM == 4){
-				sequence(false);
+			sequence(false);
+			if(METRUM <= 4){
 				state = 1;
 			}
 			else{
-				sequence(false);
 				state++;
 			}
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 
 		case 5:
-			if(METRUM == 5){
-				sequence(false);
+			sequence(false);
+			if(METRUM <= 5){
 				state = 1;
 			}
 			else{
-				sequence(false);
 				state++;
 			}
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 
 		case 6:
-			if(METRUM == 6){
-				sequence(false);
+			sequence(false);
+
+			if(METRUM <= 6){
 				state = 1;
 			}
 			else{
-				sequence(false);
 				state++;
 			}
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 
 		case 7:
-			if(METRUM == 7){
-				sequence(false);
-				state = 1;
+			sequence(false);
+			if(METRUM == 7){	
 			}
-			else{
-				sequence(false);
-				state++;
-			}
+			state = 1;
 			break;
 		/*-------------------------------------------------CASE----------------------------------------------------------*/
 		default:
@@ -143,11 +138,51 @@ void  PIT_IRQHandler(void) {
 	}
 	else if(PIT->CHANNEL[1].TFLG & PIT_TFLG_TIF_MASK){
 		
-		
-	}
+		meter = Touch_Scan_LH();
+		if(meter>20){
+			if(meter>20 && meter<55)
+				METRUM = 0;
+			else if(meter>60 && meter<95)
+				METRUM = 1;
+			else if(meter>100 && meter<135)
+				METRUM = 2;
+			else if(meter>140 && meter<175)
+				METRUM = 3;
+			else if(meter>180 && meter<215)
+				METRUM = 4;
+			else if(meter>220 && meter<255)
+				METRUM = 5;
+			else if(meter>260 && meter<295)
+				METRUM = 6;
+			else if(meter>300)
+				METRUM = 7;
+			
+			difference = meter - lastmeter;
+			difference = abs(difference);
+			
+			if(difference>=25){			
+			TPM0->CNT=0;
+			}
+			
+			slcdDisplay(METRUM, 10);
+			
+			lastmeter = meter;
+			
+		}
+}
 	
 	PIT->CHANNEL[0].TFLG &= PIT_TFLG_TIF_MASK;
 	PIT->CHANNEL[1].TFLG &= PIT_TFLG_TIF_MASK;
+}
+
+void  TPM0_IRQHandler(void) {
+	
+	if (TPM0->STATUS & TPM_STATUS_CH0F_MASK) {
+		
+		slcdDisplay(BPM, 10);
+		
+		TPM0->STATUS |= TPM_STATUS_CH0F_MASK;
+	}
 }
 
 
@@ -155,30 +190,25 @@ void  PIT_IRQHandler(void) {
 /*---------------------------------------------------------------------FUNCTIONS NEEDED FOR IRQ HANDLING:----------------------------------------------------------------------------------*/
 
 void update(void){
-	int i;
+	unsigned int i;
 	i = 60*24000000;
 	global_LDVAL = i/BPM;	//Load new value to cound for PIT[0]
+	PIT->CHANNEL[0].LDVAL = global_LDVAL; 
 	slcdDisplay(BPM, 10);	//Show updated value of BPM on sLCD 
 }
 
-void metrumchg(void){
-	if(METRUM<maxmetrum){
-		METRUM++;
-	}
-	else{
-		METRUM=0;
-	}
-}
 
-void sequence(bool i){
-	if(i == 1){
+
+
+void sequence(bool z){
+	if(z == true){
 		redled(true);
 		buzzerhigh(true);
 		del(delayms);
 		redled(false);
 		buzzerhigh(false);
 	}
-	else{
+	else if(z == false){
 		greenled(true);
 		buzzerlow(true);
 		del(delayms);

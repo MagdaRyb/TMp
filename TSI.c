@@ -15,7 +15,7 @@ void Touch_Init()
 								TSI_GENCS_DVOLT(0u) | // 0-3 sets the Voltage range
 								TSI_GENCS_EXTCHRG(7) | //0-7 for External charge
 								TSI_GENCS_PS(0u) | // 0-7 for electrode prescaler
-								TSI_GENCS_NSCN(31) | // 0-31 + 1 for number of scans per electrode
+								TSI_GENCS_NSCN(25) | // 0-31 + 1 for number of scans per electrode
 								TSI_GENCS_TSIEN_MASK | // TSI enable bit
 								TSI_GENCS_STPE_MASK | // Enables TSI in low power mode
 								TSI_GENCS_EOSF_MASK ; // End of scan flag, set to 1 to clear

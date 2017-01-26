@@ -10,9 +10,10 @@
 #include "buzzer.h"
 #include "TSI.h"
 #include "delay.h"
+#include "tpm.h"
 
-extern int global_LDVAL;
-extern bool COUNTER_STATE;
+extern volatile int global_LDVAL;
+extern volatile bool COUNTER_STATE;
 
 void PORTC_PORTD_IRQHandler(void);	//Button IRQ Handler
 void PIT_IRQHandler(void);					//Periodic Interrupt Timer IRQ Handler
