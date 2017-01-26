@@ -9,16 +9,20 @@ void pitInitialize(void) {
 	PIT->MCR &= ~PIT_MCR_MDIS_MASK;
 	PIT->MCR |= PIT_MCR_FRZ_MASK;
 	
-	PIT->CHANNEL[0].LDVAL = global_LDVAL;;  
+	PIT->CHANNEL[0].LDVAL = global_LDVAL; 
+	PIT->CHANNEL[1].LDVAL = 2400000; 
 
 	NVIC_ClearPendingIRQ(PIT_IRQn);  
 	NVIC_EnableIRQ(PIT_IRQn);
-	NVIC_SetPriority(PIT_IRQn, 2); 
+	NVIC_SetPriority(PIT_IRQn, 0); 
 	__enable_irq();
 	
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TIE_MASK;   
+	PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TIE_MASK;  
 	
 	PIT->CHANNEL[0].TCTRL |= PIT_TCTRL_TEN_MASK; 
+	PIT->CHANNEL[1].TCTRL |= PIT_TCTRL_TEN_MASK; 
+	
 	PIT->MCR = 0x00; 
 
 }
