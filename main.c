@@ -43,5 +43,5 @@ void setup(void){
 	buzzerInitalize();		//Function initializing external buzzers
 	buttonsInitialize();	//Function initializing in-built and external buttons to be held by interrupts
 	Touch_Init();					//Function initializing Touch Slider peripherial
-		
+	tpmInitialize(); 	//Function initializing TPM interrupt	
 }
