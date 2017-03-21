@@ -1,6 +1,9 @@
+/*-----------------:::::|||||| buttons.c  |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Author: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "MKL46Z4.h"                    /* Device header */
-#include "buttons.h"
-//#include "slcd.h"	
+#include "buttons.h"	
 
 
 
