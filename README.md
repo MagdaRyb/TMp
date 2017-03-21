@@ -8,5 +8,4 @@ TSI set up metre in 0-7 range.
 Metre and BPM are displayed on the FRDM lcd.
 Accented measure is raised by buzzer located in AVT1616v2 module, the other - by external buzzer.
 Additionally, during accented measure is lighten up red led, during non-accented is lighten up green led.
-dawania dźwięków, na płytce FRDM-KL46Z zapalają się diody- czerwona w momencie akozostałych. 
-One of the buttons located on the AVT1616v2 module if for turning the metronome on/off.
+One of the buttons located on the AVT1616v2 module is used for turning the metronome on/off.
