@@ -1,4 +1,8 @@
-#include "ledz.h"												//Declarations
+/*-----------------:::::||||||   ledz.c   |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
+#include "ledz.h"										//Declarations
 
 /*----------------------------------------------------------------------------
   Function that initializes LEDs
