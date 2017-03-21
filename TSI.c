@@ -1,6 +1,9 @@
+/*-----------------:::::||||||   TSI.c    |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Author: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "MKL46Z4.h"
 #include "TSI.h"	
-//#include "slcd.h"
 
 // TSI initialization function
 void Touch_Init()
@@ -22,7 +25,7 @@ void Touch_Init()
 			
 // The TSI threshold isn't used is in this application
 //	TSI0->TSHD = 	TSI_TSHD_THRESH(0x00) |
-//								TSI_TSHD_THRESL(0x00);
+//	TSI_TSHD_THRESL(0x00);
 }
 
 // Function to read touch sensor from low to high capacitance for left to right
