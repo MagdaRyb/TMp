@@ -1,3 +1,7 @@
+/*-----------------:::::||||||   pit.c    |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "pit.h"
 
 volatile int global_LDVAL;
