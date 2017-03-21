@@ -1,3 +1,7 @@
+/*-----------------:::::||||||   slcd.c   |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "slcd.h"												//Declarations
 
 /*----------------------------------------------------------------------------
@@ -52,7 +56,7 @@ void slcdInitialize(void){
 	LCD->BPEN[1] = LCD_BPEN_BPEN(1u<<8) | //LCD_P40
 								 LCD_BPEN_BPEN(1u<<20); //LCD_P52
 
-	// waveform registers configuration – 4 active (because of 4 back planes)
+	// waveform registers configuration â€“ 4 active (because of 4 back planes)
 	// (44.3.7 in KL46 Reference Manual)
 	LCD->WF[4] =  LCD_WF_WF16(0x00) | LCD_WF_WF17(0x00) |
 							  LCD_WF_WF18(0x88) | // COM3 (10001000)
