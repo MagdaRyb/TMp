@@ -1,3 +1,7 @@
+/*-----------------:::::||||||   irq.c    |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "irq.h"
 
 volatile int BPM;
