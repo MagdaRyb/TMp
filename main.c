@@ -1,3 +1,7 @@
+/*-----------------:::::||||||   main.c   |||||::::::---------------------*/
+/*     	 		Purpose: Metronome project 	  		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
+/*------------------------------------------------------------------------*/
 #include "MKL46Z4.h"
 #include "irq.h"
 
