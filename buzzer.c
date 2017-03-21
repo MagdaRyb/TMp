@@ -1,6 +1,6 @@
 /*-----------------:::::|||||| buzzer.c   |||||::::::---------------------*/
 /*     	 		Purpose: Metronome project 	  		  */
-/*     		   Author: Magdalena Rybicka, Piotr Sorys		  */
+/*     		   Authors: Magdalena Rybicka, Piotr Sorys		  */
 /*------------------------------------------------------------------------*/
 #include "buzzer.h"
 
